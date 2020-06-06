@@ -1,0 +1,44 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+html, body {
+  height: 100%;
+}
+
+
+a {
+  color: #00B7FF;
+}
+#mapid{
+  height:650px;
+  width:100%;
+}
+#navigation{
+  background-image: linear-gradient(200deg, #336699, #75DDDD)  !important;
+  -moz-box-shadow:    2px 2px 2px 2px hsla(14, 0%, 50%, 0.51);
+  -webkit-box-shadow: 2px 2px 2px 2px hsla(14, 0%, 50%, 0.51);
+  box-shadow:         2px 2px 2px 2px hsla(14, 0%, 50%, 0.51);
+}
+.btn-primary{
+  background: #336699;
+  border-color: black ;
+  margin-left:3px;
+}
+#navlogo{
+  max-height: 2em;
+}
+
+#logo_nav{
+  font-family: 'Pacifico', cursive;
+}
+
+#search_results{
+  /*overflow-x: scroll;*/
+}
+
+
+video { background: rgba(255,255,255,0.5); border: 1px solid #ccc;}
+.grayscale { +filter: grayscale(1);}
+.sepia { +filter: sepia(1);}
+.blur { +filter: blur(3px);}

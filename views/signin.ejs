@@ -1,0 +1,31 @@
+<%- include partial/head.ejs %>
+<%- include partial/nav.ejs %>
+<body onLoad="initialCache()" class="splash-bg">
+    <div class="h-100 container">
+        <div class="h-100 d-flex flex-row row">
+            <div class="col-sm-12 d-flex">
+                <div class="m-auto">
+                    <div class="px-5 py-2 card bg-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Sign In!</h5>
+                            <form action="/login" method="post">
+                                <div>
+                                    <label>Username:</label>
+                                    <input type="text" name="username"/>
+                                </div>
+                                <div>
+                                    <label>Password:</label>
+                                    <input type="password" name="password"/>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Log In"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include partial/foot.ejs %>

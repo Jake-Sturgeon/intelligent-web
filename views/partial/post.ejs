@@ -1,0 +1,16 @@
+<div style="display:inline-block">
+    <img id="post<%= postid %>img"style="display: inline-block;", class="img-thumbnail" >
+    <div class="caption">
+        <b id="posttitle<%= postid %>"></b>
+        <p id="postcomment<%= postid%>"></p>
+    </div>
+</div>
+<script>
+    posts.get(<%= postid%>).then(function(event){
+        console.log(event)
+        $("#post"+event.id+"img").attr("src", event.image)
+        $("#posttitle"+event.id).html(event.title)
+        $("#postcomment"+event.id).html(event.description)
+        }
+    )
+</script>

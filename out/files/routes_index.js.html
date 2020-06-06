@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>routes\index.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/app.html">app</a></li>
+                                <li><a href="../classes/DB-interface.html">DB-interface</a></li>
+                                <li><a href="../classes/index-routing.html">index-routing</a></li>
+                                <li><a href="../classes/IndexedDB.html">IndexedDB</a></li>
+                                <li><a href="../classes/map.html">map</a></li>
+                                <li><a href="../classes/map-interface.html">map-interface</a></li>
+                                <li><a href="../classes/socket-io.html">socket-io</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/App.html">App</a></li>
+                                <li><a href="../modules/Map - On Document Ready.html">Map - On Document Ready</a></li>
+                                <li><a href="../modules/map-module.html">map-module</a></li>
+                                <li><a href="../modules/Routing.html">Routing</a></li>
+                                <li><a href="../modules/Service-Worker.html">Service-Worker</a></li>
+                                <li><a href="../modules/socket-io.html">socket-io</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: routes\index.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * Index routes, provides information for main bulk of server. Produces get requests for main websites, as well as creation
+ * @module Routing
+ *  @class index-routing
+ * @requires  express, router, postcodesIO
+ *
+ */
+var express = require(&#x27;express&#x27;);
+var session = require(&#x27;express-session&#x27;);
+var router = express.Router();
+var PostcodesIO = require(&#x27;postcodesio-client&#x27;);
+var postcodes = new PostcodesIO();
+const fs = require(&quot;fs-extra&quot;);
+
+
+
+
+
+//DATA BASE
+
+var user = require(&#x27;../controllers/users&#x27;);
+
+var event = require(&#x27;./event_routes&#x27;);
+router.use(&#x27;/events&#x27;, event);
+
+var post = require(&#x27;./post_routes&#x27;);
+router.use(&#x27;/posts&#x27;, post);
+
+var comment = require(&#x27;./comment_routes&#x27;);
+router.use(&#x27;/comments&#x27;, comment);
+
+var initDB = require(&#x27;../controllers/init&#x27;);
+initDB.init();
+
+const mongoose = require(&#x27;mongoose&#x27;);
+
+const User = mongoose.model(&#x27;User&#x27;);
+const Event = mongoose.model(&#x27;Event&#x27;);
+
+
+
+
+//DATA BASE
+
+var passport = require(&#x27;passport&#x27;)
+    , LocalStrategy = require(&#x27;passport-local&#x27;).Strategy;
+
+router.use(session({ secret: &quot;cats&quot; }));
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        console.log(&quot;User&quot;)
+        done(err, user);
+    });
+});
+
+passport.use(new LocalStrategy({
+        usernameField: &#x27;username&#x27;,
+        passwordField: &#x27;password&#x27;,
+        session: true
+    },
+    function(username, password, done) {
+        User.findOne({ username: username }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) { return done(null, false); }
+            if (!user.validPassword(password)) { return done(null, false); }
+            return done(null, user);
+        });
+    }
+));
+
+router.post(&#x27;/login&#x27;,
+    passport.authenticate(&#x27;local&#x27;, { successRedirect: &#x27;/&#x27;,
+      failureRedirect: &#x27;/signin&#x27;})
+);
+
+router.get(&#x27;/logout&#x27;, function(req, res){
+    req.logout();
+    req.session.destroy(function (err) {
+
+        res.redirect(&#x27;/&#x27;); //Inside a callback… bulletproof!
+    });
+});
+
+
+/* GET home page. */
+/**
+ * Router get main index, renders the main map.
+ *
+ * @method router.get(&#x27;/&#x27; ...
+ */
+router.get(&#x27;/&#x27;, function(req, res, next) {
+  res.render(&#x27;map&#x27;, { title: &#x27;Rate My Selfie&#x27;});
+});
+
+
+/**
+ * Router partial, renders the view for a post.
+ *
+ * @method
+ */
+router.get(&#x27;/postpartial&#x27;, function(req, res, next) {
+    idval = req.query.id
+    postid = req.query.postid
+    res.render(&#x27;partial/post&#x27;, {id:idval, postid:postid, layout: !req.xhr});
+});
+
+/**
+ * My method description.  Like other pieces of your comment blocks,
+ * this can span multiple lines.
+ *
+ * @method methodName
+ * @param {String} foo Argument 1
+ * @param {Object} config A config object
+ * @param {String} config.name The name on the config object
+ * @param {Function} config.callback A callback function on the config object
+ * @param {Boolean} [extra=false] Do extra, optional work
+ * @return {Boolean} Returns true on success
+ */
+router.get(&#x27;/eventpartial&#x27;, function(req, res, next) {
+    id = req.query.id
+    title = req.query.title
+    radius = req.query.radius
+    lat = req.query.lat
+    lon = req.query.lon
+    db = req.query.db
+    city = &quot;&quot;
+    pc = &quot;&quot;
+    // postcodes.near(parseFloat(lat), parseFloat(lon)).then(postcode =&gt; {x
+    //     console.log(postcode[0])
+    //     city=postcode[0].nuts
+    //     console.log(city)
+    //     pc = (postcode[0].postcode)
+    //     console.log(pc)
+    //     res.render(&#x27;partial/event&#x27;, {id: id, title:title, radius:radius, postcode:pc, city:city, layout: !req.xhr});
+    // }, function(error){
+    //     console.log(error)
+    //     city = &quot;N/A&quot;
+    //     pc = &quot;N/A&quot;
+    //     res.render(&#x27;partial/event&#x27;, {id: id, title:title, radius:radius, postcode:pc, city:city, layout: !req.xhr});
+    // });
+    res.render(&#x27;partial/event&#x27;, {id: id, title:title, radius:radius, postcode:pc, city:city, db:db, layout: !req.xhr});
+
+
+});
+
+/**
+ * My method description.  Like other pieces of your comment blocks,
+ * this can span multiple lines.
+ *
+ * @method methodName
+ * @param {String} foo Argument 1
+ * @param {Object} config A config object
+ * @param {String} config.name The name on the config object
+ * @param {Function} config.callback A callback function on the config object
+ * @param {Boolean} [extra=false] Do extra, optional work
+ * @return {Boolean} Returns true on success
+ */
+router.get(&#x27;/eventpartial&#x27;, function(req, res, next) {
+    id = req.query.id
+    res.render(&#x27;partial/event&#x27;, {id: id, layout: !req.xhr});
+});
+
+
+router.get(&#x27;/editeventpartial&#x27;, function(req, res, next) {
+    id = req.query.id
+    title = req.query.title
+    radius = req.query.radius
+    lat = req.query.lat
+    lon = req.query.lon
+    res.render(&#x27;partial/editevent&#x27;, {id: id, title:title, radius:radius, lat:lat, lon:lon, layout: !req.xhr});
+});
+/**
+ * My method description.  Like other pieces of your comment blocks,
+ * this can span multiple lines.
+ *
+ * @method methodName
+ * @param {String} foo Argument 1
+ * @param {Object} config A config object
+ * @param {String} config.name The name on the config object
+ * @param {Function} config.callback A callback function on the config object
+ * @param {Boolean} [extra=false] Do extra, optional work
+ * @return {Boolean} Returns true on success
+ */
+router.get(&#x27;/index&#x27;, isLoggedIn, function(req, res, next) {
+  res.render(&#x27;map&#x27;, { title: &#x27;Rate My Selfie&#x27;});
+});
+
+/**
+ * My method description.  Like other pieces of your comment blocks,
+ * this can span multiple lines.
+ *
+ * @method methodName
+ * @param {String} foo Argument 1
+ * @param {Object} config A config object
+ * @param {String} config.name The name on the config object
+ * @param {Function} config.callback A callback function on the config object
+ * @param {Boolean} [extra=false] Do extra, optional work
+ * @return {Boolean} Returns true on success
+ */
+router.get(&#x27;/map&#x27;, isLoggedIn ,function(req, res, next) {
+    res.render(&#x27;map&#x27;, { title: &#x27;Map&#x27; });
+});
+
+
+router.get(&#x27;/edit:userId&#x27;, function(req, res, next) {
+    res.render(&#x27;edit&#x27;, { title: req.params[&quot;userId&quot;] });
+});
+
+
+
+
+/**
+ * Get request for sign-in
+ *
+ * @method getSignIn
+ */
+router.get(&#x27;/signin&#x27;, function(req, res, next) {
+  res.render(&#x27;signin&#x27;, { title: &#x27;Sign In&#x27; });
+});
+
+/**
+ * GET request for sign-up
+ *
+ * @method getSignup
+ */
+router.get(&#x27;/signup&#x27;, function(req, res, next) {
+  res.render(&#x27;signup&#x27;, { title: &#x27;Sign Up&#x27; });
+});
+
+/**
+ * Post request for search
+ *
+ * @method postSearch
+ * @param {String} Text
+ * @param {Object} Option
+ * @return {Boolean} Returns true on success
+ */
+router.post(&#x27;/search&#x27;, function(req, res, next) {
+  var text = req.body.text
+  var option = req.body.option
+  var events = JSON.parse(req.body.events)
+  var returned_events = new Array();
+  var distance = 0
+
+postcodes.lookup(text).then(postcode =&gt; {
+  userData = postcode;
+  var long = userData.longitude
+  var lati = userData.latitude
+  for (var i = 0, len = events.length; i &lt; len; ++i) {
+    var title = events[i].title;
+    var long2 = events[i].lon;
+    var lati2 = events[i].lat;
+    var distance = (((parseFloat(long) - parseFloat(long2))**2 + (parseFloat(lati) - parseFloat(lati2))**2)**1/2)*111*100
+    returned_events.push({&quot;id&quot;:events[i].id, &quot;dis&quot;:distance})
+  }
+  res.send(JSON.stringify(returned_events));
+});
+
+});
+
+/**
+ * Post request for search
+ *
+ * @method postSearch
+ * @param {String} Text
+ * @param {Object} Option
+ * @return {Boolean} Returns true on success
+ */
+router.post(&#x27;/searchpostcode&#x27;, function(req, res, next) {
+    var text = req.body.postcode
+    console.log(text)
+    if (text.length &gt; 0) {
+        postcodes.lookup(text).then(postcode =&gt; {
+            res.send({lon: postcode.longitude, lat:postcode.latitude});
+        });
+    }
+});
+
+/**
+ * Router post
+ *
+ * @method methodName
+ * @param {String} foo Argument 1
+ * @param {Object} config A config object
+ * @param {String} config.name The name on the config object
+ * @param {Function} config.callback A callback function on the config object
+ * @param {Boolean} [extra=false] Do extra, optional work
+ * @return {Boolean} Returns true on success
+ */
+router.post(&#x27;/uploadpicture&#x27;, function (req, res, next) {
+      var userId= req.body.userId;
+      var newString = new Date().getTime();
+      var imageBlob = req.body.imageBlob.replace(/^data:image\/\w+;base64,/,
+          &quot;&quot;);
+      var data = {user:userId, file:imageBlob}
+      //AT THIS POINT, SAVE TO MONGODB
+      res.end(JSON.stringify({data: &#x27;Sent To Server&#x27;}));
+});
+
+/**
+ * Checks if the user is logged in, if authenticated, carry on, else return to sign in page
+ *
+ * @method isLoggedIn
+ * @param {Object} req, request object
+ * @param {Object} res, result
+ * @param {Object} next, next
+ */
+function isLoggedIn(req, res, next) {
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect(302, &#x27;/signin&#x27;);
+}
+
+module.exports = router;
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

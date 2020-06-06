@@ -1,0 +1,33 @@
+<div class="mx-5 card h-100">
+    <h2 id= "<%= id%>title" class="card-title text-center"></h2>
+    <img id= "<%= id%>pic" class="card-img-top img-thumbnail" alt="Card image cap">
+    <div id= "<%= id %>body" class="card-body">
+        <div id="<%= id %>post" style="overflow-x: auto; white-space: nowrap;" class="text-center"></div>
+        <p class="card-text">Comments go here</p>
+        <p class="card-text date"></p>
+    </div>
+    <div class="card-footer">
+        <form id='submit_comment<%= id %>' onsubmit="return false;">
+        <input type="hidden" name="eventid" value=<%= id %>>
+        <input type="hidden" name="lat" value="1">
+        <input type="hidden" name="lon" value="1">
+        <div class="row">
+            <div class="col-md-10 col-sm-8">
+                <input type="text" class="form-control" name="comment">
+            </div>
+            <div class="col-md-2 col-sm-4">
+                <button class="w-100 btn btn-primary" onclick=submitComment(<%= id %>)><i class="far fa-paper-plane"></i></button>
+            </div>
+            </div>
+        </form>
+        </div>
+</div>
+
+<script>
+events.get(<%= id%>).then(function(event){
+        $("#"+event.id+"pic").attr("src", event.image)
+        $("#"+event.id+"title").text(event.title)
+        $("#"+event.id+"body").children("p.card-text.date").text(event.created)
+    }
+)
+</script>

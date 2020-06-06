@@ -1,0 +1,38 @@
+<%- include partial/head.ejs %>
+<%- include partial/nav.ejs %>
+<body onLoad="initialCache()" class="bg-dark">
+    <div class="h-100 container">
+        <div class="h-100 d-flex flex-row row">
+            <div class="col-md-4 col-sm-12 d-flex">
+                <div class="m-auto text-white">
+                    <h1><%= title %></h1>
+                    <p>Welcome to <%= title %></p>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 d-flex" style="font-size: 10rem;">
+                <div class="m-auto text-white">
+                    <i class="far fa-user"></i>
+                    <i class="far fa-thumbs-up"></i>
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row row pb-5">
+            <div class="col-md-4 col-sm-12 d-flex" style="font-size: 10rem;">
+                <div class="m-auto text-white">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 d-flex bg-secondary text-white">
+                <div class="m-auto p-auto text-white">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus nisi, tempus nec eleifend euismod, porttitor eu eros. Morbi rutrum odio eu eros lacinia egestas. Quisque tortor massa, euismod non arcu id, sollicitudin interdum nisl. Praesent sed eleifend tortor. Nulla urna nibh, euismod a porta sed, commodo id lorem. Donec vel urna vel mi tincidunt sollicitudin. Proin eleifend elementum efficitur.
+
+                        Nulla sem odio, ultricies a ultrices ut, venenatis dictum diam. Cras convallis nec mi vitae vulputate. Nulla efficitur sit amet lorem nec suscipit. Donec sapien urna, congue sit amet tempus id, imperdiet vel felis. Donec ac sem consectetur, sollicitudin nisl sit amet, ullamcorper tellus. In gravida in est ac pharetra. Praesent viverra mollis nisi, eget feugiat mauris consequat at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include partial/foot.ejs %>

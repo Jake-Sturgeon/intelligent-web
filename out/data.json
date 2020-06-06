@@ -1,0 +1,1653 @@
+{
+    "project": {},
+    "files": {
+        "public\\javascripts\\app.js": {
+            "name": "public\\javascripts\\app.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\javascripts\\idb.js": {
+            "name": "public\\javascripts\\idb.js",
+            "modules": {},
+            "classes": {
+                "IndexedDB": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\javascripts\\interface.js": {
+            "name": "public\\javascripts\\interface.js",
+            "modules": {},
+            "classes": {
+                "DB-interface": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\javascripts\\map.js": {
+            "name": "public\\javascripts\\map.js",
+            "modules": {
+                "map-module": 1,
+                "Map - On Document Ready": 1
+            },
+            "classes": {
+                "map": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\javascripts\\mapInterface.js": {
+            "name": "public\\javascripts\\mapInterface.js",
+            "modules": {},
+            "classes": {
+                "map-interface": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\javascripts\\search.js": {
+            "name": "public\\javascripts\\search.js",
+            "modules": {},
+            "classes": {
+                "app": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\javascripts\\webrtc.js": {
+            "name": "public\\javascripts\\webrtc.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public\\service_worker.js": {
+            "name": "public\\service_worker.js",
+            "modules": {
+                "Service-Worker": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "routes\\index.js": {
+            "name": "routes\\index.js",
+            "modules": {
+                "Routing": 1
+            },
+            "classes": {
+                "index-routing": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "routes\\users.js": {
+            "name": "routes\\users.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "socket.io\\socket-io.js": {
+            "name": "socket.io\\socket-io.js",
+            "modules": {
+                "socket-io": 1
+            },
+            "classes": {
+                "socket-io": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app.js": {
+            "name": "app.js",
+            "modules": {
+                "App": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "map-module": {
+            "name": "map-module",
+            "submodules": {
+                "Map - On Document Ready": 1
+            },
+            "elements": {},
+            "classes": {
+                "IndexedDB": 1,
+                "DB-interface": 1,
+                "map": 1,
+                "map-interface": 1,
+                "app": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "public\\javascripts\\search.js",
+            "line": 1,
+            "description": "Mapping Class, produces the leafletJS front-end creation. Additionally deals with the creation of modals.",
+            "requires": [
+                "map"
+            ]
+        },
+        "Map - On Document Ready": {
+            "name": "Map - On Document Ready",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "map": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "map-module",
+            "namespace": "",
+            "file": "public\\javascripts\\map.js",
+            "line": 1,
+            "description": "Jquery document on ready for mapping module."
+        },
+        "Service-Worker": {
+            "name": "Service-Worker",
+            "submodules": {},
+            "elements": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "public\\service_worker.js",
+            "line": 14,
+            "description": "This is the description for my class."
+        },
+        "Routing": {
+            "name": "Routing",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "index-routing": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "routes\\index.js",
+            "line": 1,
+            "description": "Index routes, provides information for main bulk of server. Produces get requests for main websites, as well as creation",
+            "requires": [
+                "express",
+                "router",
+                "postcodesIO"
+            ]
+        },
+        "socket-io": {
+            "name": "socket-io",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "socket-io": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "socket.io\\socket-io.js",
+            "line": 2,
+            "description": "Socket io. Contains ability to emit and broadcast necessary socket.io capabilities.",
+            "requires": [
+                "socket-io"
+            ],
+            "itemtype": "main"
+        },
+        "App": {
+            "name": "App",
+            "submodules": {},
+            "elements": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "app.js",
+            "line": 2,
+            "description": "App js. Contains large amount of requirements, as well as being the main source.",
+            "requires": [
+                "express",
+                "router",
+                "postcodesIO"
+            ],
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "IndexedDB": {
+            "name": "IndexedDB",
+            "shortname": "IndexedDB",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "map-module",
+            "file": "public\\javascripts\\idb.js",
+            "line": 1,
+            "description": "This is the description for my class."
+        },
+        "DB-interface": {
+            "name": "DB-interface",
+            "shortname": "DB-interface",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "map-module",
+            "file": "public\\javascripts\\interface.js",
+            "line": 1,
+            "description": "This is the description for my class."
+        },
+        "map": {
+            "name": "map",
+            "shortname": "map",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "map-module",
+            "namespace": "",
+            "file": "public\\javascripts\\map.js",
+            "line": 1,
+            "description": "Mapping Class, produces the leafletJS front-end creation. Additionally deals with the creation of modals.",
+            "submodule": "Map - On Document Ready"
+        },
+        "map-interface": {
+            "name": "map-interface",
+            "shortname": "map-interface",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "map-module",
+            "namespace": "",
+            "file": "public\\javascripts\\mapInterface.js",
+            "line": 1,
+            "description": "This is used to add events and post."
+        },
+        "app": {
+            "name": "app",
+            "shortname": "app",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "map-module",
+            "namespace": "",
+            "file": "public\\javascripts\\search.js",
+            "line": 1,
+            "description": "Provides generic helper functions for rest of the server"
+        },
+        "index-routing": {
+            "name": "index-routing",
+            "shortname": "index-routing",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Routing",
+            "namespace": "",
+            "file": "routes\\index.js",
+            "line": 1,
+            "description": "Index routes, provides information for main bulk of server. Produces get requests for main websites, as well as creation"
+        },
+        "socket-io": {
+            "name": "socket-io",
+            "shortname": "socket-io",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "socket-io",
+            "namespace": "",
+            "file": "socket.io\\socket-io.js",
+            "line": 2,
+            "description": "Socket io. Contains ability to emit and broadcast necessary socket.io capabilities."
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 2,
+            "description": "Submit event, used when creating a new event, saves it to the database",
+            "itemtype": "method",
+            "name": "submitEvent",
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 66,
+            "description": "submitPosts, creates a new post on an event",
+            "itemtype": "method",
+            "name": "submitPost",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Event ID",
+                    "type": "Integer"
+                }
+            ],
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 124,
+            "description": "Render Post",
+            "itemtype": "method",
+            "name": "renderPost",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "object id",
+                    "type": "Integer"
+                },
+                {
+                    "name": "data",
+                    "description": "object with necessary data",
+                    "type": "Object"
+                },
+                {
+                    "name": "loc",
+                    "description": "Location to append html to",
+                    "type": "String"
+                }
+            ],
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 148,
+            "description": "Submit Comment, submits a new comment on an event",
+            "itemtype": "method",
+            "name": "submitComment",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "EventID",
+                    "type": "Integer"
+                }
+            ],
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 211,
+            "description": "Render Comment, renders a new comment",
+            "itemtype": "method",
+            "name": "renderComment",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "event id",
+                    "type": "Integer"
+                },
+                {
+                    "name": "data",
+                    "description": "comment data",
+                    "type": "Object"
+                }
+            ],
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 224,
+            "description": "Renders events by sending get request to server",
+            "itemtype": "method",
+            "name": "renderEvent",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "Integer"
+                },
+                {
+                    "name": "value",
+                    "description": "object filled with possible event values",
+                    "type": "Object"
+                }
+            ],
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 252,
+            "description": "caches and creates service worker if not cached",
+            "itemtype": "method",
+            "name": "initialCache",
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 267,
+            "description": "loads the database events, render events",
+            "itemtype": "method",
+            "name": "load",
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 286,
+            "description": "loads the database user, render events",
+            "itemtype": "method",
+            "name": "load_user",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "id of user"
+                }
+            ],
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\app.js",
+            "line": 299,
+            "description": "Returns postcode and other information given a latitude and longitude",
+            "itemtype": "method",
+            "name": "loc_from_latlon",
+            "string": "postcode",
+            "return": {
+                "description": "",
+                "type": "Lat:lat, lon:lon"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 6,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 23,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 38,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 61,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 83,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 102,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 126,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 146,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 166,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 186,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 254,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 305,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 344,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 438,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\idb.js",
+            "line": 466,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "IndexedDB"
+        },
+        {
+            "file": "public\\javascripts\\interface.js",
+            "line": 7,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "testReplace",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "DB-interface"
+        },
+        {
+            "file": "public\\javascripts\\map.js",
+            "line": 9,
+            "description": "Method to open the event modal.",
+            "itemtype": "method",
+            "name": "openEventModal()",
+            "return": {
+                "description": "Opens modal with id \"#eventModal'"
+            },
+            "class": "map",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\map.js",
+            "line": 19,
+            "description": "Method to open selfie modal",
+            "itemtype": "method",
+            "name": "openSelfieModal()",
+            "return": {
+                "description": "Opens modal with id \"#selfieModal'"
+            },
+            "class": "map",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\map.js",
+            "line": 29,
+            "description": "Returns view for map",
+            "itemtype": "method",
+            "name": "openSelfieModal()",
+            "return": {
+                "description": "Opens modal with id \"#selfieModal'"
+            },
+            "class": "map",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\map.js",
+            "line": 127,
+            "description": "Method to open the event modal.",
+            "itemtype": "method",
+            "name": "openEventModal()",
+            "return": {
+                "description": "Opens modal with id \"#eventModal'"
+            },
+            "class": "map",
+            "module": "map-module",
+            "submodule": "Map - On Document Ready"
+        },
+        {
+            "file": "public\\javascripts\\search.js",
+            "line": 8,
+            "description": "Submit a search query with a specific text string",
+            "itemtype": "method",
+            "name": "submitSearch",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "Search query",
+                    "type": "String"
+                }
+            ],
+            "class": "app",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\webrtc.js",
+            "line": 2,
+            "description": "Checks if browser compatible with webRTC",
+            "itemtype": "method",
+            "name": "hasGetUserMedia",
+            "return": {
+                "description": "Returns true if compatible, false if not",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\webrtc.js",
+            "line": 12,
+            "description": "Change filter of selfie",
+            "itemtype": "method",
+            "name": "hasGetUserMedia",
+            "return": {
+                "description": "Returns true if compatible, false if not",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\webrtc.js",
+            "line": 32,
+            "description": "Change filter of selfie",
+            "itemtype": "method",
+            "name": "hasGetUserMedia",
+            "return": {
+                "description": "Returns true if compatible, false if not",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\webrtc.js",
+            "line": 51,
+            "description": "Change filter function",
+            "itemtype": "method",
+            "name": "cameraMode",
+            "class": "index-routing",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\webrtc.js",
+            "line": 65,
+            "description": "Camera mode, enables webRTC video mode.",
+            "itemtype": "method",
+            "name": "cameraMode",
+            "class": "index-routing",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\javascripts\\webrtc.js",
+            "line": 90,
+            "description": "Snapshot function, takes a snapshot of the current camera state",
+            "itemtype": "method",
+            "name": "snapshot",
+            "class": "index-routing",
+            "module": "map-module"
+        },
+        {
+            "file": "public\\service_worker.js",
+            "line": 37,
+            "description": "installation event: it adds all the files to be cached",
+            "class": "index-routing",
+            "module": "Service-Worker"
+        },
+        {
+            "file": "public\\service_worker.js",
+            "line": 52,
+            "description": "activation of service worker: it removes all cashed files if necessary",
+            "class": "index-routing",
+            "module": "Service-Worker"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 93,
+            "description": "Router get main index, renders the main map.",
+            "itemtype": "method",
+            "name": "router.get('/' ...",
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 103,
+            "description": "Router partial, renders the view for a post.",
+            "itemtype": "method",
+            "name": "",
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 114,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 153,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 179,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 195,
+            "description": "My method description.  Like other pieces of your comment blocks,\nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 219,
+            "description": "Get request for sign-in",
+            "itemtype": "method",
+            "name": "getSignIn",
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 228,
+            "description": "GET request for sign-up",
+            "itemtype": "method",
+            "name": "getSignup",
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 237,
+            "description": "Post request for search",
+            "itemtype": "method",
+            "name": "postSearch",
+            "params": [
+                {
+                    "name": "Text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "Option",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 268,
+            "description": "Post request for search",
+            "itemtype": "method",
+            "name": "postSearch",
+            "params": [
+                {
+                    "name": "Text",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "Option",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 286,
+            "description": "Router post",
+            "itemtype": "method",
+            "name": "methodName",
+            "params": [
+                {
+                    "name": "foo",
+                    "description": "Argument 1",
+                    "type": "String"
+                },
+                {
+                    "name": "config",
+                    "description": "A config object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The name on the config object",
+                            "type": "String"
+                        },
+                        {
+                            "name": "callback",
+                            "description": "A callback function on the config object",
+                            "type": "Function"
+                        }
+                    ]
+                },
+                {
+                    "name": "extra",
+                    "description": "Do extra, optional work",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "index-routing",
+            "module": "Routing"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 307,
+            "description": "Checks if the user is logged in, if authenticated, carry on, else return to sign in page",
+            "itemtype": "method",
+            "name": "isLoggedIn",
+            "params": [
+                {
+                    "name": "req,",
+                    "description": "request object",
+                    "type": "Object"
+                },
+                {
+                    "name": "res,",
+                    "description": "result",
+                    "type": "Object"
+                },
+                {
+                    "name": "next,",
+                    "description": "next",
+                    "type": "Object"
+                }
+            ],
+            "class": "index-routing",
+            "module": "Routing"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: string",
+            "line": " public\\javascripts\\app.js:299"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " public\\javascripts\\app.js:299"
+        },
+        {
+            "message": "Missing item type\ninstallation event: it adds all the files to be cached",
+            "line": " public\\service_worker.js:37"
+        },
+        {
+            "message": "Missing item type\nactivation of service worker: it removes all cashed files if necessary",
+            "line": " public\\service_worker.js:52"
+        }
+    ]
+}

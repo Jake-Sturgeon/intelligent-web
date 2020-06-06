@@ -1,0 +1,139 @@
+<%- include partial/head.ejs %>
+<%- include('partial/nav.ejs', {active: "map"}); %>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./javascripts/socket.js"></script>
+<script src="./javascripts/map.js"></script>
+<script src="./javascripts/search.js"></script>
+
+<body onLoad="initialCache(); load()">
+<div class="modal fade" id="selfieModal" tabindex="-1" role="dialog" aria-labelledby="selfieModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Selfie</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="submit_post" onsubmit="return false;">
+          <div class="form-group">
+            <label for='title'>Title:</label><br/>
+            <input type="text" class="form-control" placeholder="Event Title" name="title"><br/>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Description</label>
+            <textarea rows="3" class="form-control" id="exampleInputPassword1" placeholder="Password"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Choose Image</label>
+            <input type="file" id="input" onchange="handleFiles(this.files, '#selfiepic')">
+            <label> Or Take Picture</label>
+            <button onclick="cameraMode('#selfie')"><i class="fas fa-camera"></i> </button>
+          </div>
+          <div class="form-group">
+            <div class="embed-responsive embed-responsive-1by1" id="selfie" style="display: none" >
+              <video id="selfiecam" autoplay>
+              </video>
+            </div>
+            <button onclick="snapshot('#selfie')" id="take-pic">SNAP</button>
+            <canvas style="display:none;"></canvas>
+          </div>
+          <div>
+            <label>Preview</label>
+            <img id='selfiepic' src="images/ratemyselfie.png" class="img-thumbnail">
+          </div>
+          <input id="post_lat" type="hidden" name="lat"><br/>
+          <input id="post_lon" type="hidden" name="lon"><br/>
+          <input id="post_radius" type="hidden" name="radius"><br/>
+          <input id="post_eventid" id="eventid" type="hidden" name="eventid">
+          <div class="form-group">
+            <button data-dismiss="modal" id="postCreate" class="btn btn-primary" onclick=submitPost()>Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="submit_event" name=“submitEvent" onsubmit="return false;">
+          <div class="form-group">
+            <label for='title'>Title:</label><br/>
+            <input type="text" class="form-control" placeholder="Event Title" name="title"><br/>
+          </div>
+          <div class="form-group">
+            <input type="file" id="input_event" onchange="handleFiles(this.files, '#eventpicpic')" capture>
+              <label> Or Take Picture</label>
+              <button onclick="cameraMode('#eventpic')"><i class="fas fa-camera"></i> </button>
+          </div>
+            <div class="form-group">
+                <div class="embed-responsive embed-responsive-1by1" id="eventpic" style="display: none" >
+                    <video id="eventpiccam" autoplay>
+                    </video>
+                </div>
+                <button onclick="snapshot('#eventpic')" id="take-pic-event">SNAP</button>
+                <canvas style="display:none;"></canvas>
+            </div>
+          <div>
+            <label>Preview</label>
+            <img id='eventpicpic' src="images/ratemyselfie.png" class="img-thumbnail">
+          </div>
+          <input id="event_lat" type="hidden" name="lat"><br/>
+          <input id="event_lon" type="hidden" name="lon"><br/>
+          <input id="event_radius" type="hidden" name="radius"><br/>
+          <div class="form-group">
+          <button data-dismiss="modal" id="eventCreate" class="btn btn-primary" onclick=submitEvent()>Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid h-95 pt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <img>
+      <img>
+    </div>
+  </div>
+  <div id="alert">
+
+  </div>
+  <div class="row">
+    <div class="col-md-7 col-sm-12">
+      <div class="row">
+        <div class="col-sm-12">
+          <!--<input class="form-control" type="text" placeholder="Search" onkeyup="submitSearch(this.value)" aria-label="Search">-->
+          <div id="mapid" class="h-90"></div>
+          <p id="details"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-sm-12 ">
+    <div class="md-form mt-0">
+        <form class="search-form">
+            <div class="input-group ">
+              <input class="form-control" type="text" placeholder="Search" onkeyup="submitSearch(this.value)" aria-label="Search">
+
+            </div>
+        </form>
+    </div>
+    <div id="trending_posts" class="mh-95  overflow-auto" style="max-height: 70vh">
+    </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+<%- include partial/foot.ejs %>
