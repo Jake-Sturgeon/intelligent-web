@@ -1,21 +1,24 @@
 # Intelligent Web Assignment
 ### 1. Installation
-This project is aimed at being able to be ran in intellij express. It will be able to be ran using the default
+This project is aimed at being able to be run in intellij express. It will be able to be ran using the default
 intellij express nodejs configuration. 
 
-In order to run this project, begin by running
 
 To install all the required modules
 npm install
 
+```bash
+npm install
+```
 To run the mongoDB:
-1. Open the monogodb command prompt
-2. Make Directory 
-U:\>mkdir data\db
-3. Run the Mongo
-U:\>mongod.exe
+```bash
+mongod --dbpath .
+```
 
 After running mongo -- To run the server, use the command:
+```bash
+node ./bin/www
+```
 node ./bin/www
 
 A browser with SSL flags blocked --> use https://localhost:3000 to access the site
